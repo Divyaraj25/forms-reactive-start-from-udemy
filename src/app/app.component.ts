@@ -42,11 +42,14 @@ export class AppComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.signupForm);
+    // this.signupForm.reset({
+    //   'gender': 'male'
+    // })
   }
   AddHobby() {
     const control = new FormControl(null, Validators.required);
-    // (<FormArray>this.signupForm.get('hobbies')).push(control);
-    (this.signupForm.get('hobbies') as FormArray).push(control);
+    (<FormArray>this.signupForm.get('hobbies')).push(control);
+    // (this.signupForm.get('hobbies') as FormArray).push(control);
   }
 
   forbiddenNames(control: FormControl): { [s: string]: boolean } {
