@@ -21,6 +21,24 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     })
+
+    // subscription on each value changes in the form
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => {
+    //     console.log(value);
+    //   })
+
+    // subscription on each field status changes in the form
+    // this.signupForm.statusChanges.subscribe(
+    //   (status) => {
+    //     console.log(status);
+    //   })
+
+    // subscription on email field status changes in the form
+    // this.signupForm.get('userData.email').statusChanges.subscribe(
+    //   (status) => {
+    //     console.log(status);
+    //   })
   }
   onSubmit() {
     console.log(this.signupForm);
@@ -38,11 +56,11 @@ export class AppComponent implements OnInit {
     return null;
   }
 
-  forbiddenEmails(control:FormControl):Promise<any> | Observable<any>{
+  forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
       setTimeout(() => {
         if (control.value === 'dmakwana651@rku.ac.in') {
-          resolve({'emailIsForbidden': true});
+          resolve({ 'emailIsForbidden': true });
         } else {
           resolve(null);
         }
