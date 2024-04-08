@@ -22,7 +22,11 @@
               id="email"
               formControlName="email"
               class="form-control">
-              <span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">Please enter a valid email</span>
+              <span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
+                <span *ngIf="signupForm.get('userData.email').errors['required']">email is required</span>
+                <span *ngIf="signupForm.get('userData.email').errors['email']">Please enter a valid email</span>
+                <span *ngIf="signupForm.get('userData.email').errors['emailIsForbidden']">This emai is forbidden</span>
+              </span>
           </div>
         </div>
         <div class="radio" *ngFor="let gender of genders">
